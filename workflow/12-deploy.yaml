@@ -17,8 +17,8 @@ spec:
         app: db
     spec:
       containers:
-      - image: postgres
-        name: postgres
+      - image: postgres:13.4
+        name: postgres:13.4
         resources:
           limits:
             memory: 512Mi

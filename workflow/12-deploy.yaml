@@ -63,11 +63,6 @@ spec:
         envFrom:
         - secretRef:
               name: api-config
-        securityContext:
-           runAsUser: 1000
-           readOnlyRootFilesystem: true
-           allowPrivilegeEscalation: false
-
 ---
 
 apiVersion: apps/v1

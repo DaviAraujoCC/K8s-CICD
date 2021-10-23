@@ -42,7 +42,7 @@ metadata:
   name: web
 spec:
   ports:
-  - port: 8080
+  - port: 50800
     protocol: TCP
     targetPort: 8080
   selector:

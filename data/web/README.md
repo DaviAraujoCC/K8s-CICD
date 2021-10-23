@@ -8,3 +8,5 @@
 - API_HOST: the full url to call the API app. An example http://web-api-host:port
 
 These two variables need to be set with docker-compose (WEB_PORT, API_HOST).
+
+fork from repository https://github.com/samcavallieri/devops_challenge

@@ -1,34 +1,66 @@
 ---
 
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   labels:
-    run: db
+    app: db
   name: db
 spec:
-  containers:
-  - image: postgres
-    name: db
-    envFrom:
-      - configMapRef:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      containers:
+      - image: postgres
+        name: postgres
+        resources:
+          limits:
+            memory: 512Mi
+            cpu: "0.5"
+        envFrom:
+        - secretRef:
               name: db-config
+        securityContext:
+           runAsUser: 1000
     
 ---
 
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   labels:
-    run: api
+    app: api
   name: api
 spec:
-  containers:
-  - image: david13356/node-api-app
-    name: api
-    envFrom:
-      - configMapRef:
-             name: api-config
+  replicas: 2
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+      - image: david13356/node-api-app
+        name: api
+        resources:
+          limits:
+            memory: 512Mi
+            cpu: "0.5"
+        envFrom:
+        - configMapRef:
+              name: api-config
+        securityContext:
+           runAsUser: 1000
+           readOnlyRootFilesystem: true
+           allowPrivilegeEscalation: false
 
 ---
 
@@ -51,9 +83,17 @@ spec:
       containers:
       - image: david13356/node-web-app
         name: node-web-app
+        resources:
+          limits:
+            memory: 512Mi
+            cpu: "0.5"
         envFrom:
-           - configMapRef:
+           - secretRef:
                    name: web-config
+        securityContext:
+           runAsUser: 1000
+           readOnlyRootFilesystem: true
+           allowPrivilegeEscalation: false
 
 ---
 

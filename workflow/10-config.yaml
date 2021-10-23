@@ -2,9 +2,9 @@
 
 apiVersion: v1
 data:
-  POSTGRES_PASSWORD: "1234"
-  POSTGRES_USER: database
-kind: ConfigMap
+  POSTGRES_PASSWORD: MTIzNA==
+  POSTGRES_USER: ZGF0YWJhc2U=
+kind: Secret
 metadata:
   name: db-config
 
@@ -12,8 +12,8 @@ metadata:
 
 apiVersion: v1
 data:
-  DB: postgres://database:1234@db-svc/database
-kind: ConfigMap
+  DB: cG9zdGdyZXM6Ly9kYXRhYmFzZToxMjM0QGRiLXN2Yy9kYXRhYmFzZQ==
+kind: Secret
 metadata:
   name: api-config
 

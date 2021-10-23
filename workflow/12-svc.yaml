@@ -11,8 +11,6 @@ spec:
     targetPort: 5432
   selector:
     run: db
-status:
-  loadBalancer: {}
 
 ---
 
@@ -29,8 +27,6 @@ spec:
     targetPort: 3000
   selector:
     run: api
-status:
-  loadBalancer: {}
 
 ---
 

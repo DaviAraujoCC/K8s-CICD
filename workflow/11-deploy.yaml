@@ -55,7 +55,7 @@ spec:
             memory: 512Mi
             cpu: "0.5"
         envFrom:
-        - configMapRef:
+        - secretRef:
               name: api-config
         securityContext:
            runAsUser: 1000
@@ -88,7 +88,7 @@ spec:
             memory: 512Mi
             cpu: "0.5"
         envFrom:
-           - secretRef:
+           - configMapRef:
                    name: web-config
         securityContext:
            runAsUser: 1000

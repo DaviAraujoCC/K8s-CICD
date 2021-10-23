@@ -23,7 +23,7 @@ metadata:
 spec:
   ports:
   - port: 3000
-    protocol: TCP
+    protocol: HTTP
     targetPort: 3000
   selector:
     app: api
@@ -39,7 +39,7 @@ metadata:
 spec:
   ports:
   - port: 50800
-    protocol: TCP
+    protocol: HTTP
     targetPort: 8080
   selector:
     app: web

@@ -18,5 +18,3 @@ you can use the docker-compose to test on local example : http://localhost:8080
 
 ![image](https://user-images.githubusercontent.com/70732391/128959370-12533c9c-42f7-4ec9-837c-00e0774b1939.png)
 
-![image](https://user-images.githubusercontent.com/70732391/130360982-e88d9d15-2201-453d-9372-a5ddfefb3d4d.png)
-

@@ -1,0 +1,30 @@
+services:
+  db:
+    image: postgres
+    container_name: db
+    ports:
+     - 5432:5432
+    environment: 
+      POSTGRES_PASSWORD: "1234"
+      POSTGRES_USER: database
+  api:
+    depends_on:
+     - db
+    image: david13356/node-api-app
+    container_name: api
+    ports:
+      - 3000:3000
+    environment: 
+      DB: postgres://database:1234@db/database
+  web:
+    depends_on:
+    - api
+    image: david13356/node-web-app
+    container_name: web
+    ports:
+      - 8080:8080
+    environment: 
+      API_HOST: http://api:3000
+      PORT: 8080
+    
+ 

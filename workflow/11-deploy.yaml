@@ -1,0 +1,59 @@
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: db
+  name: db
+spec:
+  containers:
+  - image: postgres
+    name: db
+    envFrom:
+      - configMapRef:
+              name: db-config
+    
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: api
+  name: api
+spec:
+  containers:
+  - image: david13356/node-api-app
+    name: api
+    envFrom:
+      - configMapRef:
+             name: api-config
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: web
+  name: web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - image: david13356/node-web-app
+        name: node-web-app
+        envFrom:
+           - configMapRef:
+                   name: web-config
+
+---
+

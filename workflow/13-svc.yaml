@@ -45,4 +45,3 @@ spec:
     name: http
   selector:
     app: web
-  type: NodePort

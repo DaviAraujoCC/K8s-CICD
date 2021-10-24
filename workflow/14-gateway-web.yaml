@@ -25,19 +25,11 @@ spec:
   http:
   - match:
     - uri:
-        exact: /go
+        prefix: /
     route:
     - destination:
         host: web
         port:
           number: 50800
-  - match:
-    - uri:
-       prefix: /
-    route:
-    - destination:
-        host: go-web-api-svc
-        port:
-          number: 30000
     
 

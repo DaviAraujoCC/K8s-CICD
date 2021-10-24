@@ -25,7 +25,7 @@ spec:
   - port: 3000
     protocol: TCP
     targetPort: 3000
-    name: HTTP
+    name: http
   selector:
     app: api
 
@@ -42,7 +42,7 @@ spec:
   - port: 50800
     protocol: TCP
     targetPort: 8080
-    name: HTTP
+    name: http
   selector:
     app: web
   type: NodePort

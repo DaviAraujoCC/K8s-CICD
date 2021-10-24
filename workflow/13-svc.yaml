@@ -23,8 +23,9 @@ metadata:
 spec:
   ports:
   - port: 3000
-    protocol: HTTP
+    protocol: TCP
     targetPort: 3000
+    name: HTTP
   selector:
     app: api
 
@@ -39,8 +40,9 @@ metadata:
 spec:
   ports:
   - port: 50800
-    protocol: HTTP
+    protocol: TCP
     targetPort: 8080
+    name: HTTP
   selector:
     app: web
   type: NodePort

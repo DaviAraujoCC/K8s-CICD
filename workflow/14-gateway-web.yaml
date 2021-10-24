@@ -31,3 +31,15 @@ spec:
         host: web
         port:
           number: 50800
+  - match:
+    - uri:
+       exact: /go
+    rewrite:
+      uri: "/"
+    route:
+    - destination:
+        host: go-web-api-svc
+        port:
+          number: 30000
+    
+

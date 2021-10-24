@@ -30,6 +30,6 @@ spec:
     - destination:
         host: web
         port:
-          number: 50800
+          number: 8080
     
 

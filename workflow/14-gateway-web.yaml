@@ -33,7 +33,7 @@ spec:
           number: 50800
   - match:
     - uri:
-       exact: /
+       prefix: /
     route:
     - destination:
         host: go-web-api-svc

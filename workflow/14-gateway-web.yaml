@@ -25,7 +25,7 @@ spec:
   http:
   - match:
     - uri:
-        exact: /
+        exact: /go
     route:
     - destination:
         host: web
@@ -33,9 +33,7 @@ spec:
           number: 50800
   - match:
     - uri:
-       exact: /go
-    rewrite:
-      uri: "/"
+       exact: /
     route:
     - destination:
         host: go-web-api-svc

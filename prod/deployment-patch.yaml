@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: api
+  name: api
+spec:
+  template:
+    spec:
+      $setElementOrder/containers:
+      - name: api
+      containers:
+      - image: david13356/node-api-app
+        name: api

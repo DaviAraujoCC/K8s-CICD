@@ -31,7 +31,6 @@ spec:
              name: db-pv-storage
         securityContext:
            runAsUser: 1000
-           allowPrivilegeEscalation: false
       volumes:
         - name: db-pv-storage
           persistentVolumeClaim:

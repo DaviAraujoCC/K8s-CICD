@@ -25,12 +25,12 @@ pipeline {
                      dockerImage_web = docker.build registry + "/node-web-app:v$BUILD_NUMBER"
                 }
               }
-              dir ('src/api') {
+             /*  dir ('src/api') {
                 script {
                      docker.build registry + ":$BUILD_NUMBER"
                      dockerImage_api = docker.build registry +"/node-api-app:v$BUILD_NUMBER"
                 }
-              }
+              } */
             }
         }
         stage('Push Image') {
@@ -38,7 +38,7 @@ pipeline {
               script {
                  docker.withRegistry( '', registryCredential ) {
                  dockerImage_web.push()
-                 dockerImage_api.push()
+                 //dockerImage_api.push()
                 }
               }
             }
@@ -46,7 +46,7 @@ pipeline {
         stage('Deploy Prod') {
             steps {
                   git(credentialsId: $githubCred, url: 'https://github.com/DaviAraujoCC/K8s-CICD', branch: 'main')
-                  bat "cd ./prod && kustomize edit set image david13356/node-api-app=david13356/node-api-app:v$BUILD_NUMBER"
+                 // bat "cd ./prod && kustomize edit set image david13356/node-api-app=david13356/node-api-app:v$BUILD_NUMBER"
                   bat "cd ./prod && kustomize edit set image david13356/node-web-app=david13356/node-web-app:v$BUILD_NUMBER"
                   bat "git add ./prod"
                   bat "git commit -am \"Publish new version $BUILD_NUMBER\" && git push -f origin main"
@@ -54,7 +54,7 @@ pipeline {
         }
         stage('Remove Unused docker image') {
            steps{
-             bat "docker rmi $registry/node-api-app:v$BUILD_NUMBER"
+            // bat "docker rmi $registry/node-api-app:v$BUILD_NUMBER"
              bat "docker rmi $registry/node-web-app:v$BUILD_NUMBER"
            }
         }

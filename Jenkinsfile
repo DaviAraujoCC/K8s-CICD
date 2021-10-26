@@ -44,13 +44,15 @@ pipeline {
         }
         stage('Deploy Prod') {
             steps {
-                  bat "git clone https://github.com/DaviAraujoCC/K8s-CICD.git"
-                dir("K8s-CICD") {
+                  git(credentialsId: '1bd4fb12-1bd4-4f3f-b155-7764792770ab', url: 'https://github.com/DaviAraujoCC/K8s-CICD', branch: 'main')
+                  //bat "git clone https://github.com/DaviAraujoCC/K8s-CICD.git"
+                //dir("K8s-CICD") {
                   bat "cd ./prod && kustomize edit set image api=david13356/node-api-app:v$BUILD_NUMBER"
                   bat "cd ./prod && kustomize edit set image web=david13356/node-web-app:v$BUILD_NUMBER"
-                  bat "git remote add cicd https://github.com/DaviAraujoCC/K8s-CICD.git"
-                  bat "git commit -am 'Publish new version $BUILD_NUMBER' && git push -f cicd main"
-              }
+                  bat "git add ."
+                 // bat "git remote add cicd https://github.com/DaviAraujoCC/K8s-CICD.git"
+                  bat "git commit -m 'Publish new version $BUILD_NUMBER' && git push -f"
+              //}
           }
         }
         stage('Remove Unused docker image') {

@@ -115,7 +115,6 @@ spec:
           timeoutSeconds: 30
         securityContext:
            runAsUser: 1000
-           readOnlyRootFilesystem: true
            allowPrivilegeEscalation: false
            capabilities:
               drop: ["all"]

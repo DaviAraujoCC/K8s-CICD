@@ -10,10 +10,10 @@ images:
   newTag: v12
 - name: david13356/node-api-app
   newName: david13356/node-api-app
-  newTag: v15
+  newTag: v16
 - name: david13356/node-web-app
   newName: david13356/node-web-app
-  newTag: v15
+  newTag: v16
 - name: web
   newName: david13356/node-web-app
   newTag: v12

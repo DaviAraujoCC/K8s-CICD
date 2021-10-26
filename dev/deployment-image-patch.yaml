@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: api
+  name: api
+spec:
+  template:
+    spec:
+      containers:
+      - name: api
+        image: david13356/node-api-app:v1
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: web
+  name: web
+spec:
+  template:
+    spec:
+      containers:
+      - name: web
+        image: david13356/node-web-app:v1

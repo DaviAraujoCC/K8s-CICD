@@ -1,7 +1,5 @@
 pipeline {
     agent any
-
-    tools {nodejs "node12"}
     
    environment {
        
@@ -34,7 +32,7 @@ pipeline {
               }
             }
         }
-        stage('Deploy/Push Image') {
+        stage('Push Image') {
             steps {
               script {
                  docker.withRegistry( '', registryCredential ) {
@@ -45,10 +43,23 @@ pipeline {
             }
         }
         stage('Remove Unused docker image') {
-      steps{
-        bat "docker rmi $registry/node-api-app:v$BUILD_NUMBER"
-        bat "docker rmi $registry/node-web-app:v$BUILD_NUMBER"
-      }
-    }
+           steps{
+             bat "docker rmi $registry/node-api-app:v$BUILD_NUMBER"
+             bat "docker rmi $registry/node-web-app:v$BUILD_NUMBER"
+           }
+        }
+        stage('Deploy Prod') {
+            steps {
+                container('tools') {
+                  sh "git clone https://github.com/DaviAraujoCC/K8s-CICD.git"
+                dir("K8s-CICD") {
+                  sh "cd ./prod && kustomize edit set image api=david13356/node-api-app:v$BUILD_NUMBER"
+                  sh "cd ./prod && kustomize edit set image web=david13356/node-web-app:v$BUILD_NUMBER"
+                  sh "git remote add cicd https://github.com/DaviAraujoCC/K8s-CICD.git"
+                  sh "git commit -am 'Publish new version $BUILD_NUMBER' && git push cicd main"
+                 }
+              }
+            }
+        }
     }
 }

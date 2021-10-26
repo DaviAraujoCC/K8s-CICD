@@ -49,9 +49,9 @@ pipeline {
                 //dir("K8s-CICD") {
                   bat "cd ./prod && kustomize edit set image api=david13356/node-api-app:v$BUILD_NUMBER"
                   bat "cd ./prod && kustomize edit set image web=david13356/node-web-app:v$BUILD_NUMBER"
-                  bat "git add ."
+                  bat "git add ./prod"
                  // bat "git remote add cicd https://github.com/DaviAraujoCC/K8s-CICD.git"
-                  bat "git commit -m 'Publish new version $BUILD_NUMBER' && git push -f"
+                  bat "git commit -m 'version $BUILD_NUMBER' && git push -f"
               //}
           }
         }

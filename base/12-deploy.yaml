@@ -29,8 +29,6 @@ spec:
         volumeMounts:
            - mountPath: /var/lib/postgresql/data
              name: db-pv-storage
-        securityContext:
-           runAsUser: 1000
       volumes:
         - name: db-pv-storage
           persistentVolumeClaim:

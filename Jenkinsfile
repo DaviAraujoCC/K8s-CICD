@@ -61,7 +61,7 @@ pipeline {
         }
         stage('Remove files') {
            steps{
-             bat 'rm .\K8S-CICD -r -Force'
+             bat 'rm ./K8S-CICD -r -Force'
            }
         }
     }

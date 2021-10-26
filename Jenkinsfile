@@ -7,13 +7,14 @@ pipeline {
     registryCredential = '473db8fb-7b36-4c66-aa81-1e38faa4afdc'
     dockerImage_api = ''
     dockerImage_web = ''
+    githubCred = '1bd4fb12-1bd4-4f3f-b155-7764792770ab'
     
    }
   
     stages {
         stage('Clone git') {
              steps {
-                 git(credentialsId: '1bd4fb12-1bd4-4f3f-b155-7764792770ab', url: 'https://github.com/DaviAraujoCC/node_simple_app', branch: 'main')
+                 git(credentialsId: $githubCred, url: 'https://github.com/DaviAraujoCC/node_simple_app', branch: 'main')
              }
         }
         stage('Build Image') {
@@ -44,15 +45,11 @@ pipeline {
         }
         stage('Deploy Prod') {
             steps {
-                  git(credentialsId: '1bd4fb12-1bd4-4f3f-b155-7764792770ab', url: 'https://github.com/DaviAraujoCC/K8s-CICD', branch: 'main')
-                  //bat "git clone https://github.com/DaviAraujoCC/K8s-CICD.git"
-                //dir("K8s-CICD") {
+                  git(credentialsId: $githubCred, url: 'https://github.com/DaviAraujoCC/K8s-CICD', branch: 'main')
                   bat "cd ./prod && kustomize edit set image david13356/node-api-app=david13356/node-api-app:v$BUILD_NUMBER"
                   bat "cd ./prod && kustomize edit set image david13356/node-web-app=david13356/node-web-app:v$BUILD_NUMBER"
                   bat "git add ./prod"
-                 // bat "git remote add cicd https://github.com/DaviAraujoCC/K8s-CICD.git"
                   bat "git commit -am \"Publish new version $BUILD_NUMBER\" && git push -f origin main"
-              //}
           }
         }
         stage('Remove Unused docker image') {

@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
 - ../base
 patchesStrategicMerge:
-- ./deployment-image-patch.yaml
+- ./deployment-patch.yaml
 images:
 - name: api
   newName: david13356/node-api-app

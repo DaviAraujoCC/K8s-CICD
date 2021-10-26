@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: api
+    env: prod
+  name: api
+
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: web
+    env: prod
+  name: web
+
+--- 
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: db
+    env: prod
+  name: db
+

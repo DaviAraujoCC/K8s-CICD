@@ -42,24 +42,27 @@ pipeline {
               }
             }
         }
+        stage('Deploy Prod') {
+            steps {
+                  bat "git clone https://github.com/DaviAraujoCC/K8s-CICD.git"
+                dir("K8s-CICD") {
+                  bat "cd ./prod && kustomize edit set image api=david13356/node-api-app:v$BUILD_NUMBER"
+                  bat "cd ./prod && kustomize edit set image web=david13356/node-web-app:v$BUILD_NUMBER"
+                  bat "git remote add cicd https://github.com/DaviAraujoCC/K8s-CICD.git"
+                  bat "git commit -am 'Publish new version $BUILD_NUMBER' && git push cicd main"
+              }
+          }
+        }
         stage('Remove Unused docker image') {
            steps{
              bat "docker rmi $registry/node-api-app:v$BUILD_NUMBER"
              bat "docker rmi $registry/node-web-app:v$BUILD_NUMBER"
            }
         }
-        stage('Deploy Prod') {
-            steps {
-                container('tools') {
-                  sh "git clone https://github.com/DaviAraujoCC/K8s-CICD.git"
-                dir("K8s-CICD") {
-                  sh "cd ./prod && kustomize edit set image api=david13356/node-api-app:v$BUILD_NUMBER"
-                  sh "cd ./prod && kustomize edit set image web=david13356/node-web-app:v$BUILD_NUMBER"
-                  sh "git remote add cicd https://github.com/DaviAraujoCC/K8s-CICD.git"
-                  sh "git commit -am 'Publish new version $BUILD_NUMBER' && git push cicd main"
-                 }
-              }
-            }
+        stage('Remove files') {
+           steps{
+             bat 'rm .\K8S-CICD -r -Force'
+           }
         }
     }
 }

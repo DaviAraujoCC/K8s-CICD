@@ -14,7 +14,7 @@ pipeline {
     stages {
         stage('Clone git') {
              steps {
-                 git(credentialsId: $githubCred, url: 'https://github.com/DaviAraujoCC/node_simple_app', branch: 'main')
+                 git(credentialsId: '1bd4fb12-1bd4-4f3f-b155-7764792770ab', url: 'https://github.com/DaviAraujoCC/node_simple_app', branch: 'main')
              }
         }
         stage('Build Image') {
@@ -45,7 +45,7 @@ pipeline {
         }
         stage('Deploy Prod') {
             steps {
-                  git(credentialsId: $githubCred, url: 'https://github.com/DaviAraujoCC/K8s-CICD', branch: 'main')
+                  git(credentialsId: '1bd4fb12-1bd4-4f3f-b155-7764792770ab', url: 'https://github.com/DaviAraujoCC/K8s-CICD', branch: 'main')
                  // bat "cd ./prod && kustomize edit set image david13356/node-api-app=david13356/node-api-app:v$BUILD_NUMBER"
                   bat "cd ./prod && kustomize edit set image david13356/node-web-app=david13356/node-web-app:v$BUILD_NUMBER"
                   bat "git add ./prod"

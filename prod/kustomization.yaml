@@ -7,5 +7,7 @@ patchesStrategicMerge:
 images:
 - name: api
   newName: david13356/node-api-app
+  newTag: v12
 - name: web
   newName: david13356/node-web-app
+  newTag: v12

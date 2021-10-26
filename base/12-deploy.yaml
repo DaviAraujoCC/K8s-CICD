@@ -91,7 +91,7 @@ spec:
     spec:
       containers:
       - image: david13356/node-web-app
-        name: node-web-app
+        name: web
         resources:
           limits:
             memory: 512Mi

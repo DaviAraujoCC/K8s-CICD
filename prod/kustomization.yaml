@@ -1,8 +1,11 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- 11-config.yaml
-- 12-deploy.yaml
-- 13-svc.yaml
-- 14-gateway-web.yaml
-- 10-storage.yaml
+- ../base
+        #- ../base/11-config.yaml
+        #- ../base/12-deploy.yaml
+        #- ../base/13-svc.yaml
+        #- ../base/14-gateway-web.yaml
+        #- ../base/10-storage.yaml
+patchesStrategicMerge:
+- ./deployment-image-patch.yaml

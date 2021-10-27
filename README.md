@@ -1,6 +1,6 @@
 # About
 
-This project is a demo of an implementation of GitOps practices and CI/CD Pipeline with the objective to build an nodejs application and deploy to k8s in a automatic way.
+This project is a demo of an implementation of GitOps practices and CI/CD Pipeline with the objective to build an nodejs application and deploy to k8s in an autonomous way.
 
 ## Features
 

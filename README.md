@@ -10,7 +10,7 @@ This project is a demo of an implementation of GitOps practices and CI/CD Pipeli
 * Istio (https://istio.io/)
 * Kubernetes (https://kubernetes.io/)
 
-## How this pipeline works ?
+## How this solution works ?
 
 ![](https://user-images.githubusercontent.com/70732391/139129181-0b1231da-a83e-4ebc-984c-d68b065191ec.jpg)
 

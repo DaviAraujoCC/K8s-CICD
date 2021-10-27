@@ -1,6 +1,7 @@
 pipeline {
     agent any
-    
+    tools {node "node12"}
+
    environment {
        
     registry = "david13356"
@@ -16,6 +17,18 @@ pipeline {
                  git(credentialsId: '1bd4fb12-1bd4-4f3f-b155-7764792770ab', url: 'https://github.com/DaviAraujoCC/node_simple_app', branch: 'main')
              }
         }
+        stage('Build node app') {
+            steps {
+              dir ('src/web') {
+                bat 'npm install'
+              }
+            }
+            /*  dir ('src/api') {
+                script {
+                     bat 'npm install'
+                }
+              } */
+        }
         stage('Build Image') {
             steps {
               dir ('src/web') {
@@ -26,7 +39,7 @@ pipeline {
               }
              /*  dir ('src/api') {
                 script {
-                     docker.build registry + ":$BUILD_NUMBER"
+                     docker.build registry + ":v$BUILD_NUMBER"
                      dockerImage_api = docker.build registry +"/node-api-app:v$BUILD_NUMBER"
                 }
               } */

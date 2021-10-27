@@ -8,7 +8,7 @@ This project is a demo of an implementation of GitOps practices and CI/CD Pipeli
 * Jenkins (https://www.jenkins.io/)
 * Kustomize (https://kustomize.io/)
 * Istio (https://istio.io/)
-* Kubernetes (https://kubernetes.io/pt-br/)
+* Kubernetes (https://kubernetes.io/)
 
 ## How this pipeline works ?
 

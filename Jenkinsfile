@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    tools {node "node12"}
+    tools {nodejs "node12"}
 
    environment {
        
@@ -24,9 +24,7 @@ pipeline {
               }
             }
             /*  dir ('src/api') {
-                script {
                      bat 'npm install'
-                }
               } */
         }
         stage('Build Image') {

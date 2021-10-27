@@ -7,12 +7,11 @@ pipeline {
     registryCredential = '473db8fb-7b36-4c66-aa81-1e38faa4afdc'
     dockerImage_api = ''
     dockerImage_web = ''
-    githubCred = '1bd4fb12-1bd4-4f3f-b155-7764792770ab'
     
    }
   
     stages {
-        stage('Clone git') {
+        stage('Checkout app/binaries') {
              steps {
                  git(credentialsId: '1bd4fb12-1bd4-4f3f-b155-7764792770ab', url: 'https://github.com/DaviAraujoCC/node_simple_app', branch: 'main')
              }
@@ -21,7 +20,7 @@ pipeline {
             steps {
               dir ('src/web') {
                 script {
-                     docker.build registry + ":$BUILD_NUMBER"
+                     docker.build registry + ":v$BUILD_NUMBER"
                      dockerImage_web = docker.build registry + "/node-web-app:v$BUILD_NUMBER"
                 }
               }

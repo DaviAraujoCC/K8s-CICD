@@ -27,5 +27,5 @@ Please access https://github.com/DaviAraujoCC/node_simple_app for more info.
 
 ## What is the benefit of implementing GitOps solution with ArgoCD like this ?
 
-Instead of creating various accesses for your team to kubernetes cluster, making it hard to manage the certificates and possible failures and security breaches, with GitOps practices all you need is to focus on managing the access to the Git environment (users, branches etc.), every configuration/modification will be centered in a repository, since argoCD will be responsible to sync your manifests for you, it will be easy to track for changes. 
+Instead of creating various accesses for your team to kubernetes cluster, making it hard to manage the certificates and possible failures and security breaches, with GitOps practices all you need is to focus on managing the access to the Git environment (users, branches etc.), every configuration/modification will be centered in a repository, since argoCD will be responsible to sync your manifests for you, it will be easy to track for changes and simpler rollbacks for disaster recovery. 
 

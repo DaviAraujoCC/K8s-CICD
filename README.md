@@ -17,7 +17,7 @@ This project is a demo of an implementation of GitOps practices and CI/CD Pipeli
 
 There will be two repositories, one for app source code(https://github.com/DaviAraujoCC/node_simple_app) and this for k8s configuration/manifests files.
 
-The repository used for store configuration files will be synced with ArgoCD and the app source code repo will be used in pipeline by jenkins.
+The repository used for store configuration files will be synced with ArgoCD and the app source code repo will be used in pipeline by jenkins, we will be using kustomize to centralize the configuration and make this integration possible.
 
 After a change is made in branch 'main' of source code repo, we can use the pipeline (Jenkinsfile.web/Jenkinsfile.api) integrated with jenkins to build, push and deploy the app (web or api) changing the configuration in the actual repository.
 

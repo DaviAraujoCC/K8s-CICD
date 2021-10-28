@@ -12,7 +12,8 @@ This project is a demo of an implementation of GitOps practices and CI/CD Pipeli
 
 ## How this solution works ?
 
-![](https://user-images.githubusercontent.com/70732391/139129181-0b1231da-a83e-4ebc-984c-d68b065191ec.jpg)
+![jenkins](https://user-images.githubusercontent.com/70732391/139169010-9afaa623-1956-4e4b-b4d0-61083f43bf54.jpg)
+
 
 There will be two repositories, one for app source code(https://github.com/DaviAraujoCC/node_simple_app) and this for k8s configuration/manifests files.
 
